@@ -7,3 +7,4 @@ import { userReducer } from "./userReducer";
 export const appReducer = combineReducers({
     user:userReducer
 })
+

@@ -7,6 +7,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import { compose, createStore , applyMiddleware} from 'redux';
 import {appReducer} from "./redux/rootReducer"
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
 // store redux 
@@ -21,9 +22,8 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, appReducer)
 
 
-let store = createStore(persistedReducer, compose(
-applyMiddleware(thunk),
-window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+let store = createStore(persistedReducer, composeWithDevTools(
+applyMiddleware(thunk)));
 let persistor = persistStore(store)
 
 
